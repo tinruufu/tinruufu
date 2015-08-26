@@ -6,8 +6,8 @@ for downloading all images from a danbooru search result
 
 ## requirements
 
-you need python 2.7 running on a unix-y system like linux or bsd or mac osx or
-something; anything that has a text file i can read at `/usr/share/dict/words`
+you need python 2.7, probably running on a unix-y system like linux or bsd or
+mac osx or something
 
 there are also some python things you can install with `pip install [package]`
 to make stuff work
@@ -40,7 +40,8 @@ app_secret = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 without danbooru credentials associated with a gold account, you won't be able
 to access images with censored tags
 
-without twitter keys, you won't be able to tweet
+without twitter keys and a file you can read at `/usr/share/dict/words`, you
+won't be able to tweet
 
 ## components (in order of how likely i think you are to be interested in them)
 

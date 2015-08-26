@@ -26,13 +26,6 @@ HERE = os.path.dirname(__file__)
 
 WORDS = []
 
-with open('/usr/share/dict/words') as wordlist:
-    for line in wordlist.readlines():
-        word = line.strip()
-
-        if re.match(r'\w+$', word):
-            WORDS.append(word)
-
 
 def download(url):
     filename = os.path.join(HERE, url.split('/')[-1])
@@ -123,6 +116,14 @@ def get_random_image(tags):
 
 
 def random_word():
+    if not WORDS:
+        with open('/usr/share/dict/words') as wordlist:
+            for line in wordlist.readlines():
+                word = line.strip()
+
+                if re.match(r'\w+$', word):
+                    WORDS.append(word)
+
     return choice(WORDS)
 
 
