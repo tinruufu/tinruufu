@@ -29,7 +29,6 @@ def get_posts(tags):
         os.mkdir(TARGET_DIR)
 
     while True:
-        print pageno
         page = get_page(tags, pageno)
 
         if len(page) == 0:
