@@ -1,0 +1,9 @@
+secrets.py
+downloads/*
+*.bmp
+*.jpg
+*.png
+*.gif
+*.jpeg
+*.swf
+*.webm
