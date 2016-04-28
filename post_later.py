@@ -12,4 +12,4 @@ def post_in(hour_limit, tags):
 
 if __name__ == '__main__':
     from sys import argv
-    post_in(48, argv[1:])
+    post_in(2, argv[1:])
