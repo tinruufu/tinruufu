@@ -25,6 +25,10 @@ LIMIT = 100
 HERE = os.path.dirname(__file__)
 
 WORDS = []
+SLURS = requests.get(
+    'https://raw.githubusercontent.com/dariusk/wordfilter/'
+    'master/lib/badwords.json'
+).json()
 
 
 def download(url):
@@ -115,14 +119,26 @@ def get_random_image(tags):
     return (filename, source)
 
 
+def is_bad(word):
+    for slur in SLURS:
+        if slur in word:
+            return True
+
+    return False
+
+
+def populate_words():
+    with open('/usr/share/dict/words') as wordlist:
+        for line in wordlist.readlines():
+            word = line.strip()
+
+            if re.match(r'\w+$', word) and not is_bad(word):
+                WORDS.append(word)
+
+
 def random_word():
     if not WORDS:
-        with open('/usr/share/dict/words') as wordlist:
-            for line in wordlist.readlines():
-                word = line.strip()
-
-                if re.match(r'\w+$', word):
-                    WORDS.append(word)
+        populate_words()
 
     return choice(WORDS)
 
