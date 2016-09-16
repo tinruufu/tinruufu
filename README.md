@@ -60,7 +60,7 @@ of the stuff uses and will try to tweet when invoked as a script
 
 all arguments are taken as tags to filter by, just like `dl.py`
 
-### `post_later.py` (the thing that makes the timing interesting)
+### `tweet_soon.py` (the thing that makes the timing interesting)
 
 a delayed wrapper for `nt.py` that takes the same arguments and does the same
 thing, but waits a random interval between 0 and 48 hours before doing
