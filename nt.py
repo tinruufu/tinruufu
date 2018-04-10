@@ -33,7 +33,6 @@ SLURS = requests.get(
 
 
 def download(url):
-    print(url)
     filename = os.path.join(HERE, url.split('/')[-1])
     content = requests.get(url).content
 
