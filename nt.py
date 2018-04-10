@@ -4,6 +4,7 @@ from random import choice
 import re
 import os.path
 from sys import argv
+from urlparse import urljoin
 
 import requests
 
@@ -32,6 +33,7 @@ SLURS = requests.get(
 
 
 def download(url):
+    print(url)
     filename = os.path.join(HERE, url.split('/')[-1])
     content = requests.get(url).content
 
@@ -48,9 +50,14 @@ def danbooru(url, **params):
             'api_key': danbooru_key,
         })
 
-    return requests.get(
+    resp = requests.get(
         URL.format(url), params=params,
     ).json()
+
+    if not isinstance(resp, list):
+        raise RuntimeError(resp)
+
+    return resp
 
 
 def get_page(tags, page):
@@ -98,7 +105,7 @@ def get_random_image(tags):
     page = ((post_number - index_on_page) / LIMIT) + 1
     post = get_page(tags, page)[index_on_page]
 
-    filename = download(URL.format(post['file_url']))
+    filename = download(urljoin(URL.format(''), post['file_url']))
     pixiv_id = post.get('pixiv_id', None)
     source = None
 
