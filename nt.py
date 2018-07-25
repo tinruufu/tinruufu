@@ -122,6 +122,9 @@ def get_random_image(tags):
             if resp.status_code == 200:
                 source = post['source']
 
+    if source is None:
+        return get_random_image(tags)
+
     return (filename, source)
 
 
